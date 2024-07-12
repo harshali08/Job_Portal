@@ -20,3 +20,16 @@ model user {
   password String?
   
 }
+
+model jobs{
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+ position  String
+ mainCategory String
+  category  String
+  company  String
+  description  String
+  experience Int
+  salary  String
+  posted  DateTime   @default(now())
+  
+}
