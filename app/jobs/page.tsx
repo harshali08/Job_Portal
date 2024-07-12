@@ -1,4 +1,5 @@
 import JobComp from "@/components/JobComp";
+import SingleJobComp from "@/components/SingleJobComp";
 import React from "react";
 
 const page = () => {
@@ -49,7 +50,6 @@ const page = () => {
         salary="180-250"
         posted={2}
       />
-            
        
     </div>
   );

@@ -5,8 +5,6 @@
 
 // const JobComp = (props) => {
 
-    
-
 //   return (
 //     <div>
 //       <div className="m-5">
@@ -60,10 +58,11 @@
 
 "use client";
 
-import { Building2 } from "lucide-react";
 import React from "react";
+import { Button } from "./ui/button";
+import { Building2 } from 'lucide-react';
 
-interface JobCompProps {
+interface SingleJobCompProps {
   position: string;
   category: string;
   company: string;
@@ -73,7 +72,7 @@ interface JobCompProps {
   posted: number;
 }
 
-const JobComp: React.FC<JobCompProps> = (props) => {
+const SingleJobComp: React.FC<SingleJobCompProps> = (props) => {
   return (
     <div>
       <div className="m-4 ">
@@ -84,14 +83,14 @@ const JobComp: React.FC<JobCompProps> = (props) => {
               className="flex justify-between overflow-hidden  text-lg font-semibold sm:text-xl"
             >
               <h1>{props.position}</h1>{" "}
-              <button className="ml-2 mr-3 p-2 rounded-full bg-orange-100 px-2 py-0.5 text-sm text-orange-900 capitalize">{props.category}</button>{" "}
+              <button className="ml-2 mr-3 p-2 rounded-full bg-red-100 px-2 py-0.5 text-sm text-red-900 capitalize">
+                {props.category}
+              </button>{" "}
             </a>
-            <h3 className="text-sm font-semibold text-gray-800 mb-2">
+            <h3 className="flex justify-start text-sm font-semibold text-blue-800 mt-2 mb-2 ">
             <Building2 size={18} strokeWidth={1.75} />&nbsp;  {props.company}
             </h3>
-            <p className="overflow-hidden pr-7 text-sm">
-              {props.description}
-            </p>
+            <p className="overflow-hidden pr-7 text-sm">{props.description}</p>
 
             <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-500 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
               <div className="">
@@ -103,14 +102,19 @@ const JobComp: React.FC<JobCompProps> = (props) => {
               <div className="">
                 Salary:
                 <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
-                  {props.salary}
+                  {props.salary} k
                 </span>
               </div>
-             
+              
             </div>
             <h2 className="overflow-hidden pr-7 text-sm mt-3 text-md font-semibold">
               Posted On : {props.posted} days ago
             </h2>
+            <div className="flex justify-center mt-3">
+              <button className=" flex justify-center py-2 px-5 border border-transparent text-lg  font-semibold rounded-md text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                Apply
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -118,5 +122,4 @@ const JobComp: React.FC<JobCompProps> = (props) => {
   );
 };
 
-export default JobComp;
-
+export default SingleJobComp;

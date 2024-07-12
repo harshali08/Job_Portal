@@ -30,6 +30,7 @@ model jobs{
   description  String
   experience Int
   salary  String
+  location String
   posted  DateTime   @default(now())
   
 }
