@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {
+    
     const id = req.url.split("/job/")[1];
     await connectToDB();
     const job = await prisma.jobs.findFirst({ where: { id } });
