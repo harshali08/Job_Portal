@@ -4,6 +4,7 @@ import { connectToDB } from "@/app/helper/connectDb";
 import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 
+
 export const GET = async (req: Request, res: NextResponse) => {
   try {
     

@@ -26,7 +26,7 @@ const Navbar = () => {
             <div className="hidden sm:flex sm:items-center">
               <Link href="#" className="text-gray-800 text-md font-semibold hover:text-blue-600 mr-8"></Link>
               <Link href="/jobs" className="text-gray-800 text-md font-semibold hover:text-blue-600 mr-8">Jobs</Link>
-              <Link href="#" className="text-gray-800 text-md font-semibold hover:text-blue-600 mr-8">Partners</Link>
+              <Link href="/postjob" className="text-gray-800 text-md font-semibold hover:text-blue-600 mr-8">Post a Job</Link>
               <Link href="#" className="text-gray-800 text-md font-semibold hover:text-blue-600">Pricing</Link>
             </div>
 
