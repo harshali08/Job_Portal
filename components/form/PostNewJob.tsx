@@ -205,7 +205,7 @@ export function PostNewJob() {
             <FormItem className="py-2">
               <FormLabel>Salary</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="E.g.500k" {...field}  />
+                <Input  placeholder="E.g.500k" {...field}  />
               </FormControl>
              
               <FormMessage />

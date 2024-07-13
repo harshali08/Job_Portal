@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import JobComp from "@/components/JobComp";
+import Footer from '@/components/Footer';
 
 interface Job {
   id: string;
@@ -37,6 +38,7 @@ const Page: React.FC = () => {
 
   return (
     <>
+    <div className='p-2 sm:p-16'>
       {jobList.map((job) => (
         <JobComp
           key={job.id}
@@ -52,6 +54,9 @@ const Page: React.FC = () => {
           posted={job.posted}
         />
       ))}
+    
+    </div>
+    <Footer/>
     </>
   );
 };
