@@ -11,6 +11,7 @@ const page = () => {
       description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
       experience={2}
       salary="180-250"
+      location="Banglore"
       posted={2}
       /> 
     </div>

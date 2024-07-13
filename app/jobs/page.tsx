@@ -1,58 +1,59 @@
-import JobComp from "@/components/JobComp";
-import SingleJobComp from "@/components/SingleJobComp";
-import React from "react";
+'use client';
 
-const page = () => {
+import React, { useState, useEffect } from 'react';
+import JobComp from "@/components/JobComp";
+
+interface Job {
+  id: string;
+  position: string;
+  mainCategory: string;
+  category: string;
+  company: string;
+  description: string;
+  experience: number;
+  location: string;
+  salary: string;
+  posted: number;
+}
+
+const Page: React.FC = () => {
+  const [jobList, setJobList] = useState<Job[]>([]);
+
+  useEffect(() => {
+    async function fetchJobs() {
+      try {
+        const resp = await fetch('http://localhost:3000/api/jobs');
+        const data=await resp.json()
+        const jobData: Job[] = await data.jobs;
+        console.log(jobData);
+        setJobList(jobData);
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+    }
+
+    fetchJobs();
+  }, []);
+
   return (
-    <div>
-      <JobComp
-        position="Sr. Frontend Engineer"
-        company="Capgemini"
-        category="full time"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
-        experience={2}
-        salary="180-250"
-        posted={2}
-      />
-            <JobComp
-        position="Sr. Backend Engineer"
-        company="Accenture"
-        category="part time"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
-        experience={2}
-        salary="180-250"
-        posted={2}
-      />
-      <JobComp
-        position="Sr. Frontend Engineer"
-        company="Capgemini"
-        category="full-time"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
-        experience={2}
-        salary="180-250"
-        posted={2}
-      />
-      <JobComp
-        position="Sr. Frontend Engineer"
-        company="Capgemini"
-        category="Remote"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
-       experience={2}
-        salary="180-250"
-        posted={2}
-      />
-            <JobComp
-        position="Sr. Frontend Engineer"
-        company="Capgemini"
-        category="Remote"
-        description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ."
-        experience={2}
-        salary="180-250"
-        posted={2}
-      />
-       
-    </div>
+    <>
+      {jobList.map((job) => (
+        <JobComp
+          key={job.id}
+          
+          position={job.position}
+          
+          category={job.category}
+          company={job.company}
+          description={job.description}
+          experience={job.experience}
+          location={job.location}
+          salary={job.salary}
+          posted={job.posted}
+        />
+      ))}
+    </>
   );
 };
 
-export default page;
+export default Page;
