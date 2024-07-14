@@ -18,6 +18,8 @@ model user {
   userName    String?
   email   String   @unique
   password String?
+  role     String   @default("user") // Add a role field with a default value
+
   
 }
 

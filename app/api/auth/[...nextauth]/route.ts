@@ -8,7 +8,7 @@ import {PrismaAdapter} from '@next-auth/prisma-adapter'
 
 // console.log(prisma); // Add this line to debug the prisma object
 
-const authOptions:NextAuthOptions={
+export const authOptions:NextAuthOptions={
     
     providers:[
         CredentialsProvider({
@@ -45,13 +45,28 @@ const authOptions:NextAuthOptions={
             }
         })
     ],
-    secret:process.env.NEXTAUTH_SECRET,
-    pages:{
-        signIn:'/auth/signin',
-        
-    }
-    
+    secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: '/auth/signin',
+  },
+//   callbacks: {
+//     async session({ session, token }) {
+//       session.user = {
+//         ...session.user,
+//         role: token.role || "user", // Add role to session with default value
+//       };
+//       return session;
+//     },
+//     async jwt({ token, user }) {
+//       if (user) {
+//         token.role = user.email === "admin@gmail.com" ? "admin" : "user"; // Assign role based on email
+//       }
+//       return token;
+//     },
+//   },
+//   adapter: PrismaAdapter(prisma),
 };
 const handler=NextAuth(authOptions);
 
 export {handler as GET,handler as POST}
+
