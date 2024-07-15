@@ -14,7 +14,7 @@ interface Job {
   experience: number;
   location: string;
   salary: string;
-  posted: number;
+  posted: string;
 }
 
 const Page: React.FC = () => {
@@ -56,6 +56,7 @@ const Page: React.FC = () => {
       ))}
     
     </div>
+   {/* <PaginationComp/> */}
     <Footer/>
     </>
   );

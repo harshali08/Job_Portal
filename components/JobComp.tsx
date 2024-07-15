@@ -15,10 +15,16 @@ interface JobCompProps {
   experience: number;
   location:string;
   salary: string;
-  posted: number;
+  posted: string;
 }
 
 const JobComp: React.FC<JobCompProps> = (props) => {
+
+  const currentDate = new Date();
+  const postedDate = new Date(props.posted);
+  const timeDifference = Math.abs(currentDate.getTime() - postedDate.getTime());
+  const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
   return (
     <div>
       <div className="m-4 ">
@@ -60,7 +66,8 @@ const JobComp: React.FC<JobCompProps> = (props) => {
              
             </div>
             <h2 className="overflow-hidden pr-7 text-sm mt-3 text-md font-semibold">
-              Posted On :  {new Date(props.posted).toLocaleDateString()}
+              {/* Posted On :  {new Date(props.posted).toLocaleDateString()} */}
+              Posted : {daysDifference} days ago
             </h2>
             <div className="flex justify-end mt-3">
               <a href="/singlejob" className=" flex justify-center py-2 px-5 border border-transparent text-lg  font-semibold rounded-md text-blue-600 underline">

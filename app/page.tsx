@@ -1,5 +1,7 @@
 "use client"
 
+import Companies from '@/components/Companies'
+import Footer from '@/components/Footer'
 import JobCategory from '@/components/JobCategory'
 import MainPage from '@/components/MainPage'
 import Navbar from '@/components/Navbar'
@@ -22,7 +24,8 @@ const Page = () => {
     <div>
       <Navbar />
      <MainPage/>
-   
+   <Companies/>
+   <Footer/>
     </div>
   )
 }
