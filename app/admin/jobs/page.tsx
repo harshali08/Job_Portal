@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import { FilePenLine } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 import PaginationComp from '@/components/PaginationComp';
-
+// import SidebarComp from '@/components/SidebarComp'
 interface Job {
     id: string;
     position: string;
@@ -20,10 +20,12 @@ interface Job {
     posted: string;
 }
 
-const Page: React.FC = () => {
+const JobsPage: React.FC = () => {
     const [jobList, setJobList] = useState<Job[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [jobsPerPage] = useState(8); // Number of jobs per page
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         async function fetchJobs() {
@@ -36,13 +38,16 @@ const Page: React.FC = () => {
                 }));
                 console.log(jobData);
                 setJobList(jobData);
+                setLoading(false); // Set loading to false even if there's an error
             } catch (error) {
                 console.error('Error fetching jobs:', error);
+                setLoading(false); // Set loading to false even if there's an error
             }
         }
 
         fetchJobs();
     }, []);
+
 
     function calculateDaysAgo(dateString: string): string {
         const postedDate = new Date(dateString);
@@ -66,10 +71,23 @@ const Page: React.FC = () => {
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+   
+    if (loading) {
+        return <div className='flex justify-center items-center h-screen'>
+        
+        <div className="flex gap-2">
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-600"></div>
+    </div>
+    
+      </div>
+      }
     return (
         <div>
+            {/* <SidebarComp/> */}
             <section className="py-1 bg-blueGray-50 mb-10">
-                <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+                <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-10">
                     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                         <div className="rounded-t mb-0 px-4 py-3 border-0">
                             <div className="flex flex-wrap items-center">
@@ -86,19 +104,19 @@ const Page: React.FC = () => {
                             <table className="items-center bg-transparent w-full border-collapse">
                                 <thead>
                                     <tr>
-                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Position</th>
-                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Company</th>
-                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Posted</th>
-                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Actions</th>
+                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Position</th>
+                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Company</th>
+                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Posted</th>
+                                        <th className="px-2 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left sm:w-10">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {currentJobs.map((job) => (
                                         <tr key={job.id}>
-                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 max-w-xs break-words sm:w-10" style={{ width: '150px', maxWidth: '150px', wordWrap: 'break-word' }}>{job.position}</td>
-                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 max-w-xs break-words sm:w-10" style={{ width: '150px', maxWidth: '150px', wordWrap: 'break-word' }}>{job.company}</td>
-                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 max-w-xs break-words sm:w-10">{job.posted}</td>
-                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 max-w-xs break-words flex sm:w-10">
+                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 text-left text-blueGray-700 max-w-xs break-words sm:w-10 overflow-hidden" style={{ width: '150px', maxWidth: '150px', wordWrap: 'break-word' }}>{job.position}</td>
+                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 max-w-xs break-words sm:w-10 overflow-hidden" style={{ width: '150px', maxWidth: '150px', wordWrap: 'break-word' }}>{job.company}</td>
+                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 max-w-xs break-words sm:w-10">{job.posted}</td>
+                                            <td className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4 max-w-xs break-words flex sm:w-10">
                                                 <button className='p-2 text-blue-600'><FilePenLine /></button>
                                                 <button className='p-2 text-red-600'><Trash2 /></button>
                                             </td>
@@ -123,4 +141,5 @@ const Page: React.FC = () => {
     );
 }
 
-export default Page;
+export default JobsPage;
+

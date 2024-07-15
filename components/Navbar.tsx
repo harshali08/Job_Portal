@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { CircleUserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between py-4">
             <div>
               <Link href="/" className="text-gray-800 text-xl font-bold">
-                Job<span className="text-blue-700">Nest</span>
+                {/* Job<span className="text-blue-700">Nest</span> */}
+                <Logo/>
               </Link>
             </div>
 
