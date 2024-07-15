@@ -52,7 +52,7 @@ export function PostNewJob() {
 
   const onSubmit=async (values:z.infer<typeof formSchema>)=>{
     // console.log(values);
-    const response=await fetch('api/jobs',{
+    const response=await fetch('http://localhost:3000/api/jobs',{
       method:"POST",
       headers:{
         'Content-Type':'application/json'
@@ -71,7 +71,7 @@ export function PostNewJob() {
       
     })
     if(response.ok){
-      router.push('/jobs');
+      router.push('/admin/jobs');
     }
     else{
       console.error("Error")
