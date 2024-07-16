@@ -1,3 +1,6 @@
+
+
+
 // import React from 'react';
 // import {
 //     Pagination,
@@ -29,15 +32,16 @@
 //     }
 
 //     return (
-//         <Pagination>
+//         <Pagination className='mb-10'>
 //             <PaginationContent>
 //                 <PaginationItem>
-//                     <PaginationPrevious
-//                       className='bg-blue-600 text-white'
-//                         href="#"
-//                         onClick={() => paginate(currentPage - 1)}
+//                     <button
+//                         className={`bg-blue-600 px-3 py-1 rounded-sm text-white ${currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''}`}
+//                         onClick={() => currentPage > 1 && paginate(currentPage - 1)}
 //                         disabled={currentPage === 1}
-//                     />
+//                     >
+//                         Previous
+//                     </button>
 //                 </PaginationItem>
 //                 {pageNumbers.map((number) => (
 //                     <PaginationItem key={number}>
@@ -50,16 +54,19 @@
 //                         </PaginationLink>
 //                     </PaginationItem>
 //                 ))}
+//                 {pageNumbers.length > 5 && (
+//                     <PaginationItem>
+//                         <PaginationEllipsis />
+//                     </PaginationItem>
+//                 )}
 //                 <PaginationItem>
-//                     <PaginationEllipsis />
-//                 </PaginationItem>
-//                 <PaginationItem>
-//                     <PaginationNext
-//                         href="#"
-//                         className='bg-blue-600 text-white'
-//                         onClick={() => paginate(currentPage + 1)}
-//                         disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
-//                     />
+//                     <button
+//                         className={`bg-blue-600 text-white px-3 py-1 rounded-sm ${currentPage === pageNumbers.length ? 'cursor-not-allowed opacity-50' : ''}`}
+//                         onClick={() => currentPage < pageNumbers.length && paginate(currentPage + 1)}
+//                         disabled={currentPage === pageNumbers.length}
+//                     >
+//                         Next
+//                     </button>
 //                 </PaginationItem>
 //             </PaginationContent>
 //         </Pagination>
@@ -99,37 +106,55 @@ const PaginationComp: React.FC<PaginationProps> = ({
         pageNumbers.push(i);
     }
 
+    // Determine the range of page numbers to display
+    const maxPageNumbersToShow = 3;
+    let startPage = Math.max(currentPage - Math.floor(maxPageNumbersToShow / 2), 1);
+    let endPage = startPage + maxPageNumbersToShow - 1;
+
+    if (endPage > pageNumbers.length) {
+        endPage = pageNumbers.length;
+        startPage = Math.max(endPage - maxPageNumbersToShow + 1, 1);
+    }
+
+    const visiblePageNumbers = pageNumbers.slice(startPage - 1, endPage);
+
     return (
         <Pagination className='mb-10'>
-            <PaginationContent>
+            <PaginationContent className="flex flex-wrap justify-center items-center gap-2">
                 <PaginationItem>
                     <button
-                        className={`bg-blue-600 px-3 py-1 rounded-sm text-white ${currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''}`}
+                        className={`bg-blue-600 px-1.5 py-1 text-sm rounded-sm text-white sm:text-lg sm:px-3 sm:py-1 sm:font-medium  ${currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''}`}
                         onClick={() => currentPage > 1 && paginate(currentPage - 1)}
                         disabled={currentPage === 1}
                     >
                         Previous
                     </button>
                 </PaginationItem>
-                {pageNumbers.map((number) => (
+                {startPage > 1 && (
+                    <PaginationItem>
+                        <PaginationEllipsis className="px-3 py-1" />
+                    </PaginationItem>
+                )}
+                {visiblePageNumbers.map((number) => (
                     <PaginationItem key={number}>
                         <PaginationLink
                             href="#"
                             isActive={number === currentPage}
                             onClick={() => paginate(number)}
+                            className="px-3 py-1"
                         >
                             {number}
                         </PaginationLink>
                     </PaginationItem>
                 ))}
-                {pageNumbers.length > 5 && (
+                {endPage < pageNumbers.length && (
                     <PaginationItem>
-                        <PaginationEllipsis />
+                        <PaginationEllipsis className="px-3 py-1" />
                     </PaginationItem>
                 )}
                 <PaginationItem>
                     <button
-                        className={`bg-blue-600 text-white px-3 py-1 rounded-sm ${currentPage === pageNumbers.length ? 'cursor-not-allowed opacity-50' : ''}`}
+                        className={`bg-blue-600 text-white px-1.5 py-1 text-sm rounded-sm sm:text-lg sm:px-3 sm:py-1 sm:font-medium ${currentPage === pageNumbers.length ? 'cursor-not-allowed opacity-50' : ''}`}
                         onClick={() => currentPage < pageNumbers.length && paginate(currentPage + 1)}
                         disabled={currentPage === pageNumbers.length}
                     >
