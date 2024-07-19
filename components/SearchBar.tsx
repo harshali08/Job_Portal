@@ -154,6 +154,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             <option value="Banking">Banking</option>
             <option value="Accounting">Accounting</option>
             <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+            <option value="Designer">Designer</option>
           </select>
         </div>
 
