@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import JobComp from "@/components/JobComp";
 import Footer from '@/components/Footer';
 import PaginationComp from '@/components/PaginationComp';
+import Link from 'next/link'
 
 interface Job {
   id: string;
@@ -111,6 +112,7 @@ const Page: React.FC = () => {
     <>
       <div className='p-2 sm:p-16'>
         {currentJobs.map((job) => (
+          <Link href={`jobs/${job.id}`} key={job.id}>
           <JobComp
             key={job.id}
             position={job.position}
@@ -122,6 +124,7 @@ const Page: React.FC = () => {
             salary={job.salary}
             posted={job.posted}
           />
+          </Link>
         ))}
       </div>
       <PaginationComp

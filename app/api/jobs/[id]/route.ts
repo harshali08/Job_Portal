@@ -5,22 +5,32 @@ import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 
 
-export const GET = async (req: Request, res: NextResponse) => {
+
+export async function GET(req: Request) {
   try {
-    
-    const id = req.url.split("/job/")[1];
+    // Extract job ID from URL
+    const url = new URL(req.url);
+    const id = url.pathname.split('/jobs/')[1];
+
+    // Connect to the database
     await connectToDB();
-    const job = await prisma.jobs.findFirst({ where: { id } });
-    console.log(job)
-    if (!job)
+
+    // Fetch job from database
+    const job = await prisma.jobs.findUnique({ where: { id } });
+    console.log(job);
+
+    if (!job) {
       return NextResponse.json({ message: "Not Found" }, { status: 404 });
+    }
+
     return NextResponse.json({ message: "Success", job }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "Error", error }, { status: 500 });
+    console.error('Error fetching job data:', error);
+    return NextResponse.json({ message: "Error", error: error }, { status: 500 });
   } finally {
     await prisma.$disconnect();
   }
-};
+}
 
 export const PUT = async (req: Request, res: NextResponse) => {
   try {

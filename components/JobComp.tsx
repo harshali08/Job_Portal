@@ -70,7 +70,7 @@ const JobComp: React.FC<JobCompProps> = (props) => {
              Posted: {props.posted}
             </h2>
             <div className="flex justify-end mt-3">
-              <a href="/singlejob" className=" flex justify-center py-2 px-5 border border-transparent text-lg  font-semibold rounded-md text-blue-600 underline">
+              <a  className=" flex justify-center py-2 px-5 border border-transparent text-lg  font-semibold rounded-md text-blue-600 underline">
                 View And Apply 
               </a>
             </div>
