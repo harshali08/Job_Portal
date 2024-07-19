@@ -28,7 +28,7 @@ const JobComp: React.FC<JobCompProps> = (props) => {
   return (
     <div>
       <div className="m-4 ">
-        <div className="group ps-3 mx-2 mt-10 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg sm:mx-auto">
+        <div className="group ps-3 mx-2  grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg sm:mx-auto">
           <div className="col-span-11 flex flex-col  text-left sm:pl-4">
             <a
               href="#"
