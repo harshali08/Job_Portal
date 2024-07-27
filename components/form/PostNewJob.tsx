@@ -363,7 +363,7 @@ export function PostNewJob() {
           )}
           
         />
-        <FormField
+        {/* <FormField
           control={form.control}
           
           name="mainCategory"
@@ -378,8 +378,59 @@ export function PostNewJob() {
             </FormItem>
           )}
           
-        />
-        <FormField
+        /> */}
+        {/* <FormField
+  control={form.control}
+  name="mainCategory"
+  render={({ field }) => (
+    <FormItem className="py-2">
+      <FormLabel>Job Category</FormLabel>
+      <FormControl>
+        <select {...field} className="form-select">
+          <option value="">Select a category</option>
+          <option value="HR">HR</option>
+          <option value="IT">IT</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Finance">Finance</option>
+          <option value="Customer_Support">Customer Support</option>
+          <option value="Sales">Sales</option>
+          <option value="Banking">Banking</option>
+          <option value="Accounting">Accounting</option>
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/> */}
+
+<FormField
+  control={form.control}
+  name="mainCategory"
+  render={({ field }) => (
+    <FormItem className="py-2">
+      <FormLabel>Job Category</FormLabel>
+      <FormControl>
+        <select
+          {...field}
+          className="block w-full p-2.5 border rounded-md bg-white text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Select a category</option>
+          <option value="HR">HR</option>
+          <option value="IT">IT</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Finance">Finance</option>
+          <option value="Customer_Support">Customer Support</option>
+          <option value="Sales">Sales</option>
+          <option value="Banking">Banking</option>
+          <option value="Accounting">Accounting</option>
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+        {/* <FormField
           control={form.control}
           
           name="category"
@@ -394,7 +445,33 @@ export function PostNewJob() {
             </FormItem>
           )}
           
-        />
+        /> */}
+
+<FormField
+  control={form.control}
+  name="category"
+  render={({ field }) => (
+    <FormItem className="py-2">
+      <FormLabel>Job Type</FormLabel>
+      <FormControl>
+        <select
+          {...field}
+          className="block w-full p-2.5 border rounded-md bg-white text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Select a job type</option>
+          <option value="Full_time">Full time</option>
+          <option value="Part_time">Part time</option>
+          <option value="Remote">Remote</option>
+          <option value="Contract">Contract</option>
+          <option value="Internship">Internship</option>
+          <option value="Temporary">Temporary</option>
+        </select>
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
         
         <FormField
           control={form.control}

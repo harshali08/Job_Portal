@@ -147,7 +147,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             onChange={(e) => setFiltermainCategory(e.target.value)}
           >
             <option value="All">All</option>
-            <option value="IT Jobs">IT jobs</option>
+            <option value="IT">IT</option>
             <option value="Sales">Sales</option>
             <option value="Marketing">Marketing</option>
             <option value="Customer support">Customer support</option>
