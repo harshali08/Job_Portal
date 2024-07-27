@@ -5,6 +5,7 @@ import { FilePenLine } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 import PaginationComp from '@/components/PaginationComp';
 import DeleteJobBtn from '@/components/DeleteJobBtn';
+import SidebarComp from '@/components/SidebarComp';
 
 interface Job {
   id: string;
@@ -22,7 +23,7 @@ interface Job {
 const JobsPage: React.FC = () => {
   const [jobList, setJobList] = useState<Job[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobsPerPage] = useState(8); // Number of jobs per page
+  const [jobsPerPage] = useState(6); // Number of jobs per page
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -117,7 +118,10 @@ const JobsPage: React.FC = () => {
 
   return (
     <div>
-      <section className="py-1 bg-blueGray-50 mb-10">
+      <div className='flex'>
+        <div className='sm:w-1/6'><SidebarComp/></div>
+        <div className='sm:w-5/6'>
+        <section className="py-1 bg-blueGray-50 mb-8">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-10">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -166,6 +170,8 @@ const JobsPage: React.FC = () => {
           currentPage={currentPage}
         />
       </section>
+      </div></div>
+      
       <Footer />
     </div>
   );

@@ -3,6 +3,7 @@
 
 import Footer from '@/components/Footer';
 import PaginationComp from '@/components/PaginationComp';
+import SidebarComp from '@/components/SidebarComp';
 import { FilePenLine, Trash2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
@@ -53,9 +54,14 @@ const UserPage: React.FC = () => {
   }
 
   return (
-    <div>
-      <section className="py-1 bg-blueGray-50 mb-10">
-        <div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4 mx-auto mt-10">
+    <div >
+      
+      <div className='flex'>
+      <div className='sm:w-1/6 ' ><SidebarComp/></div>
+
+      <div className='sm:w-5/6 '>
+      <section className="py-1 bg-blueGray-50 mb-10 ">
+        <div className="w-full sm-w-90% xl:w-6/12 mb-12 xl:mb-0 px-4 mx-auto mt-10">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="rounded-t mb-0 px-4 py-3 border-0">
               <div className="flex flex-wrap items-center">
@@ -98,7 +104,10 @@ const UserPage: React.FC = () => {
           currentPage={currentPage}
         />
       </section>
-      <Footer />
+      </div>
+      </div>
+  
+    <Footer />
     </div>
   );
 };
