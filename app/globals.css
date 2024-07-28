@@ -29,6 +29,16 @@
       --chart-3: 197 37% 24%;
       --chart-4: 43 74% 66%;
       --chart-5: 27 87% 67%;
+      --color-blue-1: #1e3a8a; /* Dark blue */
+  --color-blue-2: #2563eb; /* Medium blue */
+  --color-blue-3: #3b82f6; /* Lighter blue */
+  --color-blue-4: #60a5fa; /* Light blue */
+  --color-blue-5: #93c5fd; /* Very light blue */
+  --color-blue-6: #bfdbfe; /* Lightest blue */
+  --color-blue-7: #dbeafe; /* Pale blue */
+  --color-blue-8: #e0f2fe; /* Very pale blue */
+  --color-blue-9: #f0f9ff; /* Almost white blue */
+  --color-default-blue: #1e3a8a; /* Fallback blue color */
     }
 
     .dark {
