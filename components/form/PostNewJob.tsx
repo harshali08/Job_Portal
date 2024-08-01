@@ -312,7 +312,7 @@ export function PostNewJob() {
   return (
     <Form {...form}  >
       
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8  border-1 sm:w-7/12  border-gray-400 pt-10 pl-10 pr-10 pb-4 rounded-md bg-slate-100 mt-10" >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8  border-1 sm:w-7/12  border-gray-400 pt-5 pl-10 pr-10 pb-4 rounded-md bg-slate-100 mt-10" >
        <div>
        <h1 className="text-center text-gray-700 font-semibold text-xl">Post a new Job</h1>
        <FormField
